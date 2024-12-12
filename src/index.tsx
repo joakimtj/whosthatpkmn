@@ -9,7 +9,7 @@ export function App() {
 
     const [gameOver, setGameOver] = useState<boolean>(false);
 
-    const { pokemon, isLoading, error } = usePokemon();
+    const { pokemon, isLoading, error, refetchPokemon } = usePokemon();
 
     const handleStateChange = (newValue: string) => {
         if (pokemon) {
@@ -17,6 +17,13 @@ export function App() {
         }
         setGameOver(true);
     }
+
+    // When game ends fetch a new Pokémon
+    useEffect(() => {
+        if (gameOver) {
+            refetchPokemon();
+        }
+    }, [gameOver])
 
     if (isLoading) {
         return (

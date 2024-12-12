@@ -9,24 +9,27 @@ export const usePokemon = () => {
 
     const dexNr = getRandomInt(1034);
 
-    useEffect(() => {
-        const fetchPokemon = async () => {
-            try {
-                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${dexNr}`);
-                const data = await response.json();
-                console.log('Response:', data);
-                setPokemon(data);
-            }
-            catch (err) {
-                setError(err instanceof Error ? err.message : 'Failed to fetch pokemon');
-            } finally {
-                setIsLoading(false);
-            }
-        }
+    const refetchPokemon = () => {
+        fetchPokemon();
+    }
 
+    const fetchPokemon = async () => {
+        try {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${dexNr}`);
+            const data = await response.json();
+            console.log('Response:', data);
+            setPokemon(data);
+        }
+        catch (err) {
+            setError(err instanceof Error ? err.message : 'Failed to fetch pokemon');
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    useEffect(() => {
         fetchPokemon();
     }, []);
 
-    return { pokemon, isLoading, error };
-
+    return { pokemon, isLoading, error, refetchPokemon };
 }
