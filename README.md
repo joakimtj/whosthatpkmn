@@ -1,10 +1,8 @@
-# `create-preact`
+# `whosthatpkmn`
 
-<h2 align="center">
-  <img height="256" width="256" src="./src/assets/preact.svg">
-</h2>
+A simple Pokémon guessing game built with Preact. 
 
-<h3 align="center">Get started using Preact and Vite!</h3>
+Pokémon are fetched from the PokeApi created by Paul Hallett.
 
 ## Getting Started
 
