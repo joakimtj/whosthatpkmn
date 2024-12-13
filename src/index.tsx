@@ -8,6 +8,7 @@ import './index.css'
 export function App() {
 
     const [gameOver, setGameOver] = useState<boolean>(false);
+    const [isCorrectGuess, setIsCorrectGuess] = useState<boolean>(false);
 
     const { pokemon, isLoading, error, refetchPokemon } = usePokemon();
 

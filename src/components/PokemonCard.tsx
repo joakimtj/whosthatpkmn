@@ -1,7 +1,6 @@
 import { useState } from "preact/hooks";
 import { AudioPlayer } from "./AudioPlayer";
 import { Pokemon } from "../types";
-import { PropsWithChildren } from "preact/compat";
 import { charZeroToUpperCase } from "../utils/charZeroToUppercase";
 import { PokemonSprite } from "./PokemonSprite";
 import { GuessForm } from "./GuessForm";
@@ -11,7 +10,7 @@ interface PokemonCardProps extends Pokemon {
     gameOver: boolean,
 }
 
-export const PokemonCard = ({ name, sprites, cries, onGuess, gameOver }: PropsWithChildren<PokemonCardProps>) => {
+export const PokemonCard = ({ name, sprites, cries, onGuess, gameOver }: PokemonCardProps) => {
 
     return (
         <div className="flex flex-col m-4 pt-8 p-12 rounded shadow-lg dark:shadow-zinc-900 bg-zinc-800">
