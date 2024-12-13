@@ -11,7 +11,6 @@ export const GuessForm = ({ onGuess, name }: GuessFormProps) => {
 
     const onFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Input value:', inputValue);
         onGuess(inputValue, name)
         setInputValue('');
     }

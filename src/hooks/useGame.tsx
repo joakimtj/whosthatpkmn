@@ -14,8 +14,8 @@ export const useGame = () => {
     const [state, dispatch] = useReducer(GameReducer, initialState);
 
     const makeGuess = (guess: string, answer: string) => {
-        console.log('Guess:', guess, 'Answer:', answer)
-        dispatch({ type: 'MAKE_GUESS', payload: { guess, answer } })
+        console.log('Guess:', guess, 'Answer:', answer);
+        dispatch({ type: 'MAKE_GUESS', payload: { guess, answer } });
     }
 
     return {
