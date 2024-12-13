@@ -34,7 +34,7 @@ export function App() {
     }
 
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center h-screen pb-2 bg-[#222222]">
             {pokemon && (<PokemonCard name={pokemon.name} sprites={pokemon.sprites} cries={pokemon.cries} onStateChange={handleStateChange} />)}
         </div>
     );
