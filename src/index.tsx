@@ -11,23 +11,18 @@ export function App() {
 
     const { pokemon, isLoading, error, refetchPokemon } = usePokemon();
 
-    const handleStateChange = (newValue: string) => {
+    const handleGuess = (newValue: string) => {
         if (pokemon) {
+            if (pokemon.name === newValue.toLowerCase()) {
+                setGameOver(true);
+            }
             console.log('Is guess correct:', pokemon.name === newValue.toLowerCase())
         }
-        setGameOver(true);
     }
-
-    // When game ends fetch a new Pokémon
-    useEffect(() => {
-        if (gameOver) {
-            refetchPokemon();
-        }
-    }, [gameOver])
 
     if (isLoading) {
         return (
-            <div className="flex justify-center items-center h-screen">
+            <div className="flex justify-center items-center h-screen bg-[#222222]">
                 <div className="text-center">Loading...</div>
             </div>
         )
@@ -35,7 +30,7 @@ export function App() {
 
     return (
         <div className="flex justify-center items-center h-screen pb-2 bg-[#222222]">
-            {pokemon && (<PokemonCard name={pokemon.name} sprites={pokemon.sprites} cries={pokemon.cries} onStateChange={handleStateChange} />)}
+            {pokemon && (<PokemonCard name={pokemon.name} sprites={pokemon.sprites} cries={pokemon.cries} onGuess={handleGuess} gameOver={gameOver} />)}
         </div>
     );
 }

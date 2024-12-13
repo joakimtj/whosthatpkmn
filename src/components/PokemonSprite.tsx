@@ -1,16 +1,15 @@
-import { Pokemon } from "../types"
-
 interface PokemonSpriteProps {
-    spriteSrc: string;
+    spriteSrc: string,
+    gameOver: boolean,
 }
 
-export const PokemonSprite = ({ spriteSrc }: PokemonSpriteProps) => {
+export const PokemonSprite = ({ spriteSrc, gameOver }: PokemonSpriteProps) => {
 
     return (
         <figure className="flex justify-center">
             <img
                 src={spriteSrc}
-                className="brightness-0"
+                className={`transition-all duration-500 ease-in-out ${gameOver ? "brightness-100" : "brightness-0"}`}
                 alt="pokemon sprite"
             >
             </img>
