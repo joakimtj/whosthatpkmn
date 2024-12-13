@@ -1,17 +1,18 @@
 import { useState } from "preact/hooks";
 
 interface GuessFormProps {
-    onGuess: (guess: string) => void
+    onGuess: (guess: string, answer: string) => void
+    name: string,
 }
 
-export const GuessForm = ({ onGuess: onStateChange }: GuessFormProps) => {
+export const GuessForm = ({ onGuess, name }: GuessFormProps) => {
 
     const [inputValue, setInputValue] = useState('');
 
     const onFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log('Input value:', inputValue);
-        onStateChange(inputValue);
+        onGuess(inputValue, name)
         setInputValue('');
     }
 

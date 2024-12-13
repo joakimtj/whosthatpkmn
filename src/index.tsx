@@ -4,22 +4,15 @@ import { usePokemon } from './hooks/usePokemon';
 import { useEffect, useState } from 'preact/hooks';
 
 import './index.css'
+import { GameState } from './types';
+import { useGame } from './hooks/useGame';
 
 export function App() {
 
-    const [gameOver, setGameOver] = useState<boolean>(false);
-    const [isCorrectGuess, setIsCorrectGuess] = useState<boolean>(false);
+    const { state, makeGuess, dispatch } = useGame();
 
     const { pokemon, isLoading, error, refetchPokemon } = usePokemon();
 
-    const handleGuess = (newValue: string) => {
-        if (pokemon) {
-            if (pokemon.name === newValue.toLowerCase()) {
-                setGameOver(true);
-            }
-            console.log('Is guess correct:', pokemon.name === newValue.toLowerCase())
-        }
-    }
 
     if (isLoading) {
         return (
@@ -31,7 +24,7 @@ export function App() {
 
     return (
         <div className="flex justify-center items-center h-screen pb-2 bg-[#222222]">
-            {pokemon && (<PokemonCard name={pokemon.name} sprites={pokemon.sprites} cries={pokemon.cries} onGuess={handleGuess} gameOver={gameOver} />)}
+            {pokemon && (<PokemonCard name={pokemon.name} sprites={pokemon.sprites} cries={pokemon.cries} onGuess={makeGuess} gameOver={state.isGameOver} />)}
         </div>
     );
 }
