@@ -7,7 +7,7 @@ export const usePokemon = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    const dexNr = getRandomInt(1034);
+    const dexNr = getRandomInt(151);
 
     const refetchPokemon = () => {
         fetchPokemon();

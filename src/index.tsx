@@ -1,10 +1,8 @@
 import { render } from 'preact';
 import { PokemonCard } from './components/PokemonCard';
 import { usePokemon } from './hooks/usePokemon';
-import { useEffect, useState } from 'preact/hooks';
 
 import './index.css'
-import { GameState } from './types';
 import { useGame } from './hooks/useGame';
 
 export function App() {
@@ -12,7 +10,6 @@ export function App() {
     const { state, makeGuess, dispatch } = useGame();
 
     const { pokemon, isLoading, error, refetchPokemon } = usePokemon();
-
 
     if (isLoading) {
         return (
