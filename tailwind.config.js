@@ -7,5 +7,15 @@ export default {
     theme: {
         extend: {},
     },
-    plugins: [],
+    plugins: [
+        function ({ addUtilities }) {
+            addUtilities({
+                '.image-pixel': {
+                    'image-rendering': 'pixelated',
+                    '@supports not (image-rendering: pixelated)': {
+                        'image-rendering': 'crisp-edges',
+                    },
+                },
+            })
+        },],
 }
